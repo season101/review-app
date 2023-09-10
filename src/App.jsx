@@ -4,7 +4,6 @@ import reviews from './data';
 const App = () => {
   const [index, setIndex] = useState(0);
   const { id, image, job, name, text } = reviews[index];
-  console.log(reviews);
 
   return (
     <main>
@@ -20,10 +19,20 @@ const App = () => {
         <p className="info">{text}</p>
         <p className="info">
           <div className="btn-container">
-            <button className="prev-btn">
+            <button
+              className="prev-btn"
+              onClick={() =>
+                index === 0 ? setIndex(reviews.length - 1) : setIndex(index - 1)
+              }
+            >
               <FaChevronLeft />
             </button>
-            <button className="next-btn">
+            <button
+              className="next-btn"
+              onClick={() =>
+                index === reviews.length - 1 ? setIndex(0) : setIndex(index + 1)
+              }
+            >
               <FaChevronRight />
             </button>
           </div>
